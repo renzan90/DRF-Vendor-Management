@@ -12,12 +12,20 @@ class Vendor(models.Model):
     average_response_time = models.FloatField(blank=True, null=True)
     fulfillment_rate = models.FloatField(blank=True, null=True)
 
-    def save(self):
-        ascii = string.ascii_uppercase
-        digits = string.digits
+    # def save(self, *args, **kwargs):
+    #     ascii = string.ascii_uppercase
+    #     digits = string.digits
 
-        complete_code = ascii + digits
+    #     complete_code = ascii + digits
 
-        self.vendor_code = ''.join(random.choices(complete_code, k=5))
+    #     self.vendor_code = ''.join(random.choices(complete_code, k=5))
 
-        super().save()
+    #     super().save(*args, **kwargs)
+
+class VendorPerformance(models.Model):
+    vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    on_time_delivery_rate = models.FloatField()
+    quality_rating_avg = models.FloatField()
+    average_response_time = models.FloatField()
+    fulfillment_avg = models.FloatField()
