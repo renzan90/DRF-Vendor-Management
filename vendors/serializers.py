@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Vendor
+from .models import Vendor, VendorPerformance
 import string
 import random
 
@@ -24,3 +24,9 @@ class VendorSerializer(serializers.ModelSerializer):
 
         return Vendor.objects.create(**validated_data)
 
+
+class VendorPerformanceSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = VendorPerformance
+        fields = '__all__'
