@@ -1,5 +1,7 @@
 from django.db import models
 from vendors.models import Vendor
+from django.core.exceptions import ValidationError
+from django.utils import timezone
 
 class PurchaseOrder(models.Model):
     STATUS = {
@@ -27,5 +29,16 @@ class PurchaseOrder(models.Model):
     acknowledgment_date = models.DateTimeField(null=True)
 
     def clean(self):
-        if self.order_date < self.issue_date:
-            
+        assert self.order_date < self.issue_date, \
+        "Issue date cannot preceed or overlap with order date"
+        
+        assert self.issue_date <= self.acknowledgment_date, \
+        "Acknowledgement date cannot preceed the issue date"
+
+        assert self.acknowledgment_date <= self.delivery_date, \
+        "Delivery date cannot preceed acknowledgement date"
+
+    def clean_quantity(value):
+        if value < 0:
+            raise ValidationError("You must order more than zilch products")
+        
