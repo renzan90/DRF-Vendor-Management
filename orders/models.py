@@ -7,13 +7,25 @@ class PurchaseOrder(models.Model):
         "CO":"completed",
         "CA":"cancelled",
     }
-    po_number = models.CharField(unique=True, null=True)
+
+    RATING = {
+        "ONE":"bad",
+        "TWO":"below average",
+        "THREE":"average",
+        "FOUR":"above average",
+        "FIVE":"excellent"
+    }
+    po_number = models.CharField(unique=True)
     vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE)
-    order_date = models.DateTimeField()
+    order_date = models.DateTimeField(auto_now_add=True)
     delivery_date = models.DateTimeField()
     items = models.JSONField()
     quantity = models.IntegerField()
-    status = models.CharField(choices=STATUS)
-    quality_rating = models.FloatField(null=True)
-    issue_date = models.DateTimeField(auto_now=True)
+    status = models.CharField(choices=STATUS, default=STATUS[0])
+    quality_rating = models.FloatField(choices=RATING, null=True)
+    issue_date = models.DateTimeField()
     acknowledgment_date = models.DateTimeField(null=True)
+
+    def clean(self):
+        if self.order_date < self.issue_date:
+            
