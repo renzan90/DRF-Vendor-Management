@@ -5,8 +5,12 @@ from .serializers import PurchaseOrderSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import get_object_or_404
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.views import APIView
 
 class PurchaseOrderViewSet(ViewSet):
+
+    authentication_classes = [TokenAuthentication]
     
     queryset = PurchaseOrder.objects.all()
 
@@ -38,4 +42,14 @@ class PurchaseOrderViewSet(ViewSet):
         item = get_object_or_404(self.queryset, pk=pk)
         item.delete()
         return Response(status=status.HTTP_200_OK)
-  
+
+
+class AcknowledgeOrderView(APIView):
+
+    def patch(self, request, pk, date):
+        instance = PurchaseOrder.objects.get(pk=pk)
+        serialized_obj = PurchaseOrderSerializer(instance, request.data, partial=True)
+        if serialized_obj.is_valid(raise_exception=True):
+            return Response(serialized_obj.data, status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
