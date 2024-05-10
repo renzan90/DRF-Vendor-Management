@@ -1,0 +1,34 @@
+{"vendors":[
+        {
+            "name":"Dirk Schneider",
+            "contact_details":"dirk.kolner@gmail.com",
+            "address":"109-A, Koln Tower, Munchen Straße, Koln",
+            "vendor_code":null,
+            "on_time_delivery_rate":null,
+            "quality_rating_avg":null,
+            "average_response_time":null,
+            "fulfillment_rate":null
+        },
+        {
+            "name":"Huck Folder",
+            "contact_details":"fuck.holder@gmail.com",
+            "address":"80B, Swamp Town, Missisippi",
+            "vendor_code":null,
+            "on_time_delivery_rate":null,
+            "quality_rating_avg":null,
+            "average_response_time":null,
+            "fulfillment_rate":null
+        },
+
+        {
+            "name":"Sigmund Sigmundssen",
+            "contact_details":"sigmund.sverige@försäljare.com",
+            "address":"10A, Unity Apartments, Malmo",
+            "vendor_code":"",
+            "on_time_delivery_rate":null,
+            "quality_rating_avg":null,
+            "average_response_time":null,
+            "fulfillment_rate":null
+        }
+    ]
+}
