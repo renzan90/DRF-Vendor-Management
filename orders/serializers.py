@@ -1,13 +1,16 @@
 from rest_framework import serializers
 from .models import PurchaseOrder
+from vendors.serializers import VendorSerializer
 import string
 import random
 from django.utils import timezone
 
 
 class PurchaseOrderSerializer(serializers.ModelSerializer):
+    vendor = VendorSerializer()
+    
     class Meta:
-        model = 'PurchaseOrder'
+        model = PurchaseOrder
         fields = '__all__'
 
     def create(self, validated_data):
