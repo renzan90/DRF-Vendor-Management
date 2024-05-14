@@ -143,12 +143,14 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK_= {
+
+    'DATETIME_FORMAT': "%Y-%m-%d - %H:%M:%S", 
+    
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication'
     ]
 }
 
-DATETIME_FORMAT="%Y-%m-%d%H:%M:%S"
 
 L10N=False
 
