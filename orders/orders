@@ -1,0 +1,74 @@
+{"Dirk Schneider":[
+        {
+            "po_number":1,
+            "vendor":18,
+            "order_date":"2024-05-13T11:20:43.836376",
+            "delivery_date":null,
+            "items":{"product":"LIDAR", "max_range":250, "brand":"Benewake","price":10000},
+            "quantity":10,
+            "status":"pending",
+            "quality_rating":null,
+            "issue_date":null,
+            "acknowledgment_date":null
+        },
+
+        {
+            "id":10,
+            "po_number":2,
+            "vendor":18,
+            "order_date":null,
+            "delivery_date":null,
+            "items":{"product":"LIDAR", "max_range":100, "brand":"Benewake", "price":4500},
+            "quantity":15,
+            "status":"pending",
+            "quality_rating":null,
+            "issue_date":null,
+            "acknowledgment_date":null
+        
+        },
+
+        {
+            "po_number":3,
+            "vendor":18,
+            "order_date":null,
+            "delivery_date":null,
+            "items":{"product":"LIDAR", "max_range":200, "brand":"Bosch", "price":15000},
+            "quantity":15,
+            "status":"pending",
+            "quality_rating":null,
+            "issue_date":null,
+            "acknowledgment_date":null
+        
+        },
+
+        {
+            "po_number":4,
+            "vendor":18,
+            "order_date":null,
+            "delivery_date":null,
+            "items":{"product":"camera", "resolution":2, "brand":"Karl Zeisse", "price":10000},
+            "quantity":17,
+            "status":"pending",
+            "quality_rating":null,
+            "issue_date":null,
+            "acknowledgment_date":null
+        
+        },
+
+        {
+            "po_number":5,
+            "vendor":18,
+            "order_date":null,
+            "delivery_date":null,
+            "items":{"product":"camera", "resolution":6, "brand":"AerialTronics", "price":10000},
+            "quantity":17,
+            "status":"pending",
+            "quality_rating":null,
+            "issue_date":null,
+            "acknowledgment_date":null
+        
+        }
+
+        
+    ]
+}
