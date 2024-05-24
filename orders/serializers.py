@@ -3,8 +3,9 @@ from .models import PurchaseOrder
 from vendors.serializers import VendorSerializer
 import string
 import random
-from django.utils import timezone
 from rest_framework.exceptions import ValidationError
+from .helpers import calc_ontime_delivery_rate
+# from .loggers import delivery_date_logger
 
 
 class PurchaseOrderSerializer(serializers.ModelSerializer):
@@ -29,9 +30,10 @@ class PurchaseOrderSerializer(serializers.ModelSerializer):
     
     def update(self, instance, validated_data):
 
+        vendor = instance.vendor
+        vendor_data = validated_data.pop('vendor')
 
         instance.po_number = validated_data.get('po_number', instance.po_number)
-        instance.vendor = validated_data.get('vendor', instance.vendor)
         instance.delivery_date = validated_data.get('delivery_date', instance.delivery_date)
         instance.items = validated_data.get('items', instance.items)
         instance.quantity = validated_data.get('quantity', instance.quantity)
@@ -40,7 +42,9 @@ class PurchaseOrderSerializer(serializers.ModelSerializer):
         instance.issue_date = validated_data.get('issue_date', instance.issue_date)
         
         if instance.status == 'completed':
-            instance.vendor.fulfillment_rate == 10
+            # vendor.on_time_delivery_rate = 10
+            # vendor.save()
+            calc_ontime_delivery_rate(vendor)
 
         instance.save()
 
