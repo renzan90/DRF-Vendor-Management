@@ -1,8 +1,9 @@
 import logging
 
-delivery_date_logger = logging.getLogger('delivery_date_logger')
-delivery_date_logger.setLevel(logging.DEBUG)
+vms_logger = logging.getLogger('delivery_date_logger')
+
+vms_logger.setLevel(logging.DEBUG)
 
 file_handler = logging.FileHandler('calculations.log')
 
-delivery_date_logger.addHandler(file_handler)
+vms_logger.addHandler(file_handler)
